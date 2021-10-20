@@ -20,9 +20,9 @@ class HomeViewModel(
     private val repository: RepositoryImpl = RepositoryImpl(RemoteDataSource())
 ) : ViewModel() {
 
-    fun getData() {
+    fun getData(date: String) {
         liveData.value = AppState.Loading
-        repository.getData(callback)
+        repository.getData(date, callback)
     }
 
     private val callback = object : Callback<PODServerResponseData> {
