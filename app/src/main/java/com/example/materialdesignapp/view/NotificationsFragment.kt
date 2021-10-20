@@ -1,4 +1,4 @@
-package com.example.materialdesignapp.ui.notifications
+package com.example.materialdesignapp.view
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,8 +8,8 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.example.materialdesignapp.R
 import com.example.materialdesignapp.databinding.FragmentNotificationsBinding
+import com.example.materialdesignapp.viewmodel.NotificationsViewModel
 
 class NotificationsFragment : Fragment() {
 

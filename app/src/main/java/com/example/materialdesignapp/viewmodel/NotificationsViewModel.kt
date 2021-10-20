@@ -1,4 +1,4 @@
-package com.example.materialdesignapp.ui.notifications
+package com.example.materialdesignapp.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
