@@ -104,7 +104,6 @@ class HomeFragment : Fragment() {
             imageView.load(serverResponseData.url)
             bottom_sheet_description_header.text = serverResponseData.title
             bottom_sheet_description.text = serverResponseData.explanation
-            //textDate.text =
         }
     }
 
