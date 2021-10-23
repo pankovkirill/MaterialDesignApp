@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/bottom_sheet_container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_bottom_sheet"
+    android:orientation="vertical"
+    app:behavior_hideable="true"
+    app:behavior_peekHeight="0dp"
+    app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
+
+    <TextView
+        android:id="@+id/bottom_sheet_system"
+        style="@style/style_text_bottom_sheet_settings"
+        android:text="@string/custom_theme" />
+
+    <TextView
+        android:id="@+id/bottom_sheet_light"
+        style="@style/style_text_bottom_sheet_settings"
+        android:text="@string/light_theme" />
+
+    <TextView
+        android:id="@+id/bottom_sheet_night"
+        style="@style/style_text_bottom_sheet_settings"
+        android:text="@string/night_theme" />
+</LinearLayout>

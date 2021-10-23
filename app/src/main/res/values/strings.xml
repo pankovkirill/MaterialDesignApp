@@ -1,10 +1,17 @@
 <resources>
-    <string name="app_name">MaterialDesignApp</string>
-    <string name="title_home">Home</string>
+    <string name="app_name">Material Design</string>
+    <string name="title_home">Главная</string>
     <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="title_settings">Настройки</string>
     <string name="error">Ошибка</string>
     <string name="reload">Повторить</string>
     <string name="wiki_helper_text">Поищите термин в википедии</string>
     <string name="search_wiki">Найти в Википедии</string>
+    <string name="today">Сегодня</string>
+    <string name="yesterday">Вчера</string>
+    <string name="day_before_yesterday">Позавчера</string>
+    <string name="custom_theme">Кастомная тема</string>
+    <string name="light_theme">Светлая тема</string>
+    <string name="night_theme">Темная тема</string>
+    <string name="decoration">Оформление</string>
 </resources>

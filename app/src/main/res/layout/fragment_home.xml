@@ -26,20 +26,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="text" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <LinearLayout
-        android:id="@+id/mainView"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_gravity="center"
-        android:gravity="center"
-        android:orientation="vertical">
 
         <com.google.android.material.chip.ChipGroup
             android:id="@+id/chipGroup"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:paddingTop="@dimen/xx_padding"
             app:singleSelection="true">
 
             <com.google.android.material.chip.Chip
@@ -47,26 +40,35 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:checked="true"
-                android:text="Сегодня" />
+                android:text="@string/today" />
 
             <com.google.android.material.chip.Chip
                 style="@style/Widget.MaterialComponents.Chip.Choice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Вчера" />
+                android:text="@string/yesterday" />
 
             <com.google.android.material.chip.Chip
                 style="@style/Widget.MaterialComponents.Chip.Choice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Позавчера" />
+                android:text="@string/day_before_yesterday" />
         </com.google.android.material.chip.ChipGroup>
+    </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.imageview.ShapeableImageView
+    <LinearLayout
+        android:id="@+id/mainView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <com.example.materialdesignapp.view.customview.EquilateralImageView
             android:id="@+id/imageView"
-            android:layout_width="300dp"
+            android:layout_width="wrap_content"
             android:layout_height="300dp"
-            app:shapeAppearanceOverlay="@style/Circular"
+            app:shapeAppearanceOverlay="@style/сircular"
             tools:src="@tools:sample/avatars" />
     </LinearLayout>
 
@@ -75,7 +77,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:visibility="gone"
-        app:layout_anchor="@+id/mainView"
+        app:layout_anchor="@+id/input_layout"
         app:layout_anchorGravity="center"
         tools:visibility="invisible">
 

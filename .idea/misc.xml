@@ -3,11 +3,23 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Bro/AndroidStudioProjects/MaterialDesignApp/app/src/main/res/drawable/background_bottom_sheet.xml" value="0.3307291666666667" />
+        <entry key="..\:/Users/Bro/AndroidStudioProjects/MaterialDesignApp/app/src/main/res/drawable/background_bottom_sheet_settings.xml" value="0.1" />
         <entry key="..\:/Users/Bro/AndroidStudioProjects/MaterialDesignApp/app/src/main/res/drawable/custom_style.xml" value="0.10185185185185185" />
+        <entry key="..\:/Users/Bro/AndroidStudioProjects/MaterialDesignApp/app/src/main/res/drawable/ic_baseline_settings_24.xml" value="0.2851851851851852" />
+        <entry key="..\:/Users/Bro/AndroidStudioProjects/MaterialDesignApp/app/src/main/res/drawable/ic_dashboard_black_24dp.xml" value="0.2851851851851852" />
+        <entry key="..\:/Users/Bro/AndroidStudioProjects/MaterialDesignApp/app/src/main/res/drawable/ic_home_black_24dp.xml" value="0.3307291666666667" />
+        <entry key="..\:/Users/Bro/AndroidStudioProjects/MaterialDesignApp/app/src/main/res/drawable/ic_launcher_foreground.xml" value="0.3307291666666667" />
+        <entry key="..\:/Users/Bro/AndroidStudioProjects/MaterialDesignApp/app/src/main/res/drawable/ic_notifications_black_24dp.xml" value="0.2851851851851852" />
         <entry key="..\:/Users/Bro/AndroidStudioProjects/MaterialDesignApp/app/src/main/res/drawable/ic_wikipedia.xml" value="0.1" />
+        <entry key="..\:/Users/Bro/AndroidStudioProjects/MaterialDesignApp/app/src/main/res/layout-v25/bottom_sheet_settings.xml" value="0.3145833333333333" />
         <entry key="..\:/Users/Bro/AndroidStudioProjects/MaterialDesignApp/app/src/main/res/layout/activity_main.xml" value="0.2264151024877837" />
         <entry key="..\:/Users/Bro/AndroidStudioProjects/MaterialDesignApp/app/src/main/res/layout/bottom_sheet_home.xml" value="0.2988679352838745" />
+        <entry key="..\:/Users/Bro/AndroidStudioProjects/MaterialDesignApp/app/src/main/res/layout/bottom_sheet_settings.xml" value="0.3145833333333333" />
+        <entry key="..\:/Users/Bro/AndroidStudioProjects/MaterialDesignApp/app/src/main/res/layout/fragment_dashboard.xml" value="0.3145833333333333" />
         <entry key="..\:/Users/Bro/AndroidStudioProjects/MaterialDesignApp/app/src/main/res/layout/fragment_home.xml" value="0.2264151024877837" />
+        <entry key="..\:/Users/Bro/AndroidStudioProjects/MaterialDesignApp/app/src/main/res/layout/fragment_settings.xml" value="0.3145833333333333" />
+        <entry key="..\:/Users/Bro/AndroidStudioProjects/MaterialDesignApp/app/src/main/res/menu/bottom_nav_menu.xml" value="0.3145833333333333" />
         <entry key="..\:/Users/Bro/AndroidStudioProjects/MaterialDesignApp/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.13697916666666668" />
       </map>
     </option>

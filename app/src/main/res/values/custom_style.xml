@@ -1,4 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <style name="сircular">
+        <item name="cornerSize">10%</item>
+    </style>
+
+    <style name="style_text_bottom_sheet_settings">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingStart">@dimen/x_padding</item>
+        <item name="android:paddingTop">@dimen/x_padding</item>
+        <item name="android:paddingEnd">@dimen/x_padding</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
 </resources>
