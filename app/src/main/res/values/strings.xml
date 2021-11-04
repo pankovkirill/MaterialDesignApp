@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Material Design</string>
     <string name="title_home">Главная</string>
-    <string name="title_dashboard">Dashboard</string>
+    <string name="title_dashboard">Марс</string>
     <string name="title_settings">Настройки</string>
     <string name="error">Ошибка</string>
     <string name="reload">Повторить</string>

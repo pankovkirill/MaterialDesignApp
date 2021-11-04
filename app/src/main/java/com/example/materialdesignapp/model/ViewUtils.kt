@@ -15,13 +15,12 @@ fun View.showSnackBar(
     text: String,
     actionText: String,
     action: (View) -> Unit,
-    length: Int = Snackbar.LENGTH_INDEFINITE
 ) {
     Snackbar
         .make(
             this,
             text,
-            length
+            Snackbar.LENGTH_INDEFINITE
         )
         .setAction(actionText) { action(this) }
         .show()

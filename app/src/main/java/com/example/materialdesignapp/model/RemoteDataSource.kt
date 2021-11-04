@@ -15,8 +15,12 @@ class RemoteDataSource {
         .build()
         .create(PictureOfTheDayAPI::class.java)
 
-    fun getDataFromServer(date: String, callback: Callback<PODServerResponseData>) {
+    fun getDataFromServerPOD(date: String, callback: Callback<PODServerResponseData>) {
         nasaApi.getPictureOfTheDay(date ,BuildConfig.API_KEY).enqueue(callback)
+    }
+
+    fun getDataFromServerPOM(callback: Callback<POMServerResponseData>) {
+        nasaApi.getPhotoOfMars(1000, 2 ,BuildConfig.API_KEY).enqueue(callback)
     }
 }
 

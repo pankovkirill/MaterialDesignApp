@@ -15,11 +15,31 @@
         android:id="@+id/navigation_dashboard"
         android:name="com.example.materialdesignapp.view.DashboardFragment"
         android:label="@string/app_name"
-        tools:layout="@layout/fragment_dashboard" />
+        tools:layout="@layout/fragment_dashboard">
+    <action
+        android:id="@+id/action_nav_dashboard_to_photoOfMarsFragment"
+        app:destination="@+id/weatherOfMarsFragment" />
+    <action
+        android:id="@+id/action_nav_dashboard_to_weatherOfMarsFragment"
+        app:destination="@+id/photoOfMarsFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_settings"
         android:name="com.example.materialdesignapp.view.SettingsFragment"
         android:label="@string/app_name"
         tools:layout="@layout/fragment_settings" />
+
+    <fragment
+        android:id="@+id/photoOfMarsFragment"
+        android:name="com.example.materialdesignapp.view.PhotoOfMarsFragment"
+        android:label="@string/app_name"
+        tools:layout="@layout/photo_of_mars_fragment" />
+
+    <fragment
+        android:id="@+id/weatherOfMarsFragment"
+        android:name="com.example.materialdesignapp.view.WeatherOfMarsFragment"
+        android:label="@string/app_name"
+        tools:layout="@layout/weather_of_mars_fragment" />
+
 </navigation>

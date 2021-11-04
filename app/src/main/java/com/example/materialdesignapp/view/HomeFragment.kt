@@ -22,6 +22,7 @@ import com.example.materialdesignapp.viewmodel.AppState
 import com.example.materialdesignapp.viewmodel.HomeViewModel
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.chip.Chip
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.bottom_sheet_home.*
 import java.text.SimpleDateFormat
 import java.time.LocalDate
@@ -68,7 +69,6 @@ class HomeFragment : Fragment() {
 
     @RequiresApi(Build.VERSION_CODES.O)
     private fun renderData(appState: AppState) {
-
         when (appState) {
             is AppState.Success -> {
                 with(binding) {
@@ -86,11 +86,16 @@ class HomeFragment : Fragment() {
             is AppState.Error -> {
                 with(binding) {
                     mainView.hide()
-                    loadingLayout.show()
-                    mainView.showSnackBar(
-                        getString(R.string.error),
-                        getString(R.string.reload),
-                        { viewModel.getData("${year}-${month}-${day - 1}") })
+                    loadingLayout.hide()
+//                    coordinatorView.showSnackBar(
+//                        getString(R.string.error),
+//                        getString(R.string.reload),
+//                        { viewModel.getData("${year}-${month}-${day - 1}") })
+                    Toast.makeText(
+                        context,
+                        "Отсутствует подключение к интернету",
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
             }
         }

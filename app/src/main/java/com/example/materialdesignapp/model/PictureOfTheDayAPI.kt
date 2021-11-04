@@ -11,4 +11,11 @@ interface PictureOfTheDayAPI {
         @Query("date") date: String,
         @Query("api_key") api_key: String
     ): Call<PODServerResponseData>
+
+    @GET("mars-photos/api/v1/rovers/curiosity/photos?")
+    fun getPhotoOfMars(
+        @Query("sol") sol: Int,
+        @Query("page") page: Int,
+        @Query("api_key") api_key: String
+    ): Call<POMServerResponseData>
 }

@@ -6,6 +6,6 @@ class RepositoryImpl(
     private val remoteDataSource: RemoteDataSource
 ) : Repository {
     override fun getData(date: String, callback: Callback<PODServerResponseData>) {
-        remoteDataSource.getDataFromServer(date ,callback)
+        remoteDataSource.getDataFromServerPOD(date ,callback)
     }
 }

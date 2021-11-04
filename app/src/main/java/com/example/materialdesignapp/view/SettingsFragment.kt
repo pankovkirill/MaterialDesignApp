@@ -90,8 +90,8 @@ class SettingsFragment : Fragment() {
     }
 
     private fun setBottomSheetBehavior() {
-        bottomSheetBehavior.peekHeight = 425
         bottomSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
+        bottomSheetBehavior.peekHeight = 450
     }
 
     override fun onDestroyView() {
