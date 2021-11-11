@@ -10,9 +10,11 @@ import androidx.recyclerview.widget.RecyclerView
 import coil.api.load
 import com.example.materialdesignapp.R
 import com.example.materialdesignapp.model.POMServerResponseData
+import com.squareup.picasso.Picasso
 
 class PhotoOfMarsAdapter : RecyclerView.Adapter<PhotoOfMarsAdapter.PhotoOfMarsViewHolder>() {
     private var responseData: List<POMServerResponseData.Preview> = listOf()
+
     @SuppressLint("NotifyDataSetChanged")
     fun setData(data: List<POMServerResponseData.Preview>) {
         responseData = data
