@@ -22,6 +22,8 @@ class MainActivity : AppCompatActivity() {
         setTheme(theme)
         if (theme != R.style.AppThemeNight)
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+        else
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
         super.onCreate(savedInstanceState)
 
         binding = ActivityMainBinding.inflate(layoutInflater)

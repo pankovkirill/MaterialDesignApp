@@ -10,6 +10,8 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import com.example.materialdesignapp.databinding.PhotoOfMarsFragmentBinding
+import com.example.materialdesignapp.model.hide
+import com.example.materialdesignapp.model.show
 import com.example.materialdesignapp.viewmodel.AppState
 import com.example.materialdesignapp.viewmodel.PhotoOfMarsViewModel
 
@@ -43,12 +45,23 @@ class PhotoOfMarsFragment : Fragment() {
     private fun renderData(appState: AppState) {
         when (appState) {
             is AppState.Loading -> {
-
+                with(binding) {
+                    loadingLayout.show()
+                    mainView.hide()
+                }
             }
             is AppState.SuccessPhoto -> {
+                with(binding) {
+                    loadingLayout.hide()
+                    mainView.show()
+                }
                 photoOfMarsAdapter.setData(appState.serverResponseData.photos)
             }
             is AppState.Error -> {
+                with(binding) {
+                    loadingLayout.hide()
+                    mainView.hide()
+                }
                 Toast.makeText(context, "Отсутствует подключение к интернету", Toast.LENGTH_SHORT)
                     .show()
             }

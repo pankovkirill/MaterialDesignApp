@@ -36,10 +36,17 @@ class PhotoOfMarsAdapter : RecyclerView.Adapter<PhotoOfMarsAdapter.PhotoOfMarsVi
 
     inner class PhotoOfMarsViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         fun bind(pomServerResponseData: POMServerResponseData.Preview) {
+
             itemView.apply {
-                findViewById<ImageView>(R.id.photoOfMars).load(pomServerResponseData.img_src)
+                findViewById<ImageView>(R.id.photoOfMars).load(newLink(pomServerResponseData.img_src))
                 findViewById<TextView>(R.id.textView).text = pomServerResponseData.earth_date
             }
+        }
+
+        fun newLink(link: String): String {
+            val sb = StringBuffer(link)
+            sb.insert(4, "s")
+            return sb.toString()
         }
     }
 

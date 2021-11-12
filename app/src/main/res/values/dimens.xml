@@ -9,5 +9,7 @@
     <dimen name="margin">5dp</dimen>
     <dimen name="x_margin">10dp</dimen>
     <dimen name="xx_margin">20dp</dimen>
+    <dimen name="xx_dimen">20sp</dimen>
+    <dimen name="x_dimen">15sp</dimen>
 
 </resources>

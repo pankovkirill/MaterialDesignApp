@@ -4,7 +4,9 @@
     <Transition
         motion:constraintSetEnd="@layout/fragment_home"
         motion:constraintSetStart="@layout/fragment_home_start"
-        motion:duration="1000">
+        motion:duration="1000"
+        motion:motionInterpolator="bounce">
+
 
         <OnClick motion:targetId="@id/wiki_button" />
     </Transition>

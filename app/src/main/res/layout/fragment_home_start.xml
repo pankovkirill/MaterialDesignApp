@@ -2,9 +2,9 @@
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/coordinatorView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/coordinatorView"
     tools:context=".view.HomeFragment">
 
     <androidx.constraintlayout.motion.widget.MotionLayout
@@ -20,9 +20,9 @@
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="10dp"
             android:visibility="visible"
-            app:layout_constraintBottom_toBottomOf="@+id/input_layout"
+            app:layout_constraintStart_toEndOf="@id/chipGroup"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/input_layout"
+            app:layout_constraintBottom_toBottomOf="@id/chipGroup"
             app:srcCompat="@drawable/ic_wikipedia" />
 
         <com.google.android.material.textfield.TextInputLayout
@@ -37,8 +37,9 @@
             app:endIconDrawable="@drawable/ic_wikipedia"
             app:endIconMode="custom"
             app:helperText="@string/wiki_helper_text"
-            app:layout_constraintBottom_toTopOf="@+id/image_view"
-            app:layout_constraintStart_toEndOf="parent">
+            app:layout_constraintBottom_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/input_edit_text"
@@ -48,6 +49,8 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
+
+
         <com.google.android.material.chip.ChipGroup
             android:id="@+id/chipGroup"
             android:layout_width="wrap_content"
@@ -56,7 +59,7 @@
             android:paddingTop="@dimen/xx_padding"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/input_layout"
+            app:layout_constraintTop_toTopOf="@+id/guideline2"
             app:singleSelection="true">
 
             <com.google.android.material.chip.Chip
@@ -79,26 +82,21 @@
                 android:text="@string/day_before_yesterday" />
         </com.google.android.material.chip.ChipGroup>
 
-        <LinearLayout
-            android:id="@+id/mainView"
-            android:layout_width="wrap_content"
+    </androidx.constraintlayout.motion.widget.MotionLayout>
+
+    <FrameLayout
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingBottom="@dimen/xx_padding">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imageView"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:gravity="center"
-            android:orientation="vertical"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/wiki_button"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <com.example.materialdesignapp.view.customview.EquilateralImageView
-                android:id="@+id/imageView"
-                android:layout_width="wrap_content"
-                android:layout_height="300dp"
-                app:shapeAppearanceOverlay="@style/сircular"
-                tools:src="@tools:sample/avatars" />
-        </LinearLayout>
-    </androidx.constraintlayout.motion.widget.MotionLayout>
+            tools:src="@tools:sample/avatars" />
+    </FrameLayout>
 
     <FrameLayout
         android:id="@+id/loadingLayout"

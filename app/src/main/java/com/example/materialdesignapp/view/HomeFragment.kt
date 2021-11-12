@@ -1,33 +1,36 @@
 package com.example.materialdesignapp.view
 
-import android.annotation.SuppressLint
+import android.animation.ObjectAnimator
+import android.content.Context
+import android.net.ConnectivityManager
+import android.net.NetworkCapabilities
 import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.transition.ChangeBounds
+import androidx.transition.ChangeImageTransform
+import androidx.transition.TransitionManager
+import androidx.transition.TransitionSet
 import coil.api.load
 import com.example.materialdesignapp.R
 import com.example.materialdesignapp.databinding.FragmentHomeBinding
 import com.example.materialdesignapp.model.PODServerResponseData
 import com.example.materialdesignapp.model.hide
 import com.example.materialdesignapp.model.show
-import com.example.materialdesignapp.model.showSnackBar
 import com.example.materialdesignapp.viewmodel.AppState
 import com.example.materialdesignapp.viewmodel.HomeViewModel
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.chip.Chip
-import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.bottom_sheet_home.*
-import java.text.SimpleDateFormat
-import java.time.LocalDate
-import java.time.LocalDateTime
-import java.time.format.DateTimeFormatter
+import kotlinx.android.synthetic.main.fragment_home.*
 import java.util.*
 
 class HomeFragment : Fragment() {
@@ -38,6 +41,8 @@ class HomeFragment : Fragment() {
     private val year = date.get(Calendar.YEAR)
     private val month = date.get(Calendar.MONTH) + 1
     private val day = date.get(Calendar.DAY_OF_MONTH)
+
+    private var isExpanded = false
 
     private lateinit var bottomSheetBehavior: BottomSheetBehavior<ConstraintLayout>
     private val viewModel: HomeViewModel by lazy {
@@ -65,6 +70,25 @@ class HomeFragment : Fragment() {
                 viewModel.getData("${year}-${month}-${day - position}")
             }
         }
+        binding.imageView.setOnClickListener {
+            isExpanded = !isExpanded
+            TransitionManager.beginDelayedTransition(
+                container, TransitionSet()
+                    .addTransition(ChangeBounds())
+                    .addTransition(ChangeImageTransform())
+            )
+            with(binding) {
+                val params: ViewGroup.LayoutParams = imageView.layoutParams
+                params.height =
+                    if (isExpanded) ViewGroup.LayoutParams.MATCH_PARENT else ViewGroup.LayoutParams.WRAP_CONTENT
+                imageView.layoutParams = params
+                imageView.scaleType =
+                    if (isExpanded) ImageView.ScaleType.CENTER_CROP else ImageView.ScaleType.FIT_CENTER
+            }
+        }
+        binding.errorTextView.setOnClickListener {
+            ObjectAnimator.ofFloat(binding.errorTextView, "translationY", -100f).start()
+        }
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
@@ -72,30 +96,28 @@ class HomeFragment : Fragment() {
         when (appState) {
             is AppState.Success -> {
                 with(binding) {
-                    mainView.show()
+                    imageView.show()
                     loadingLayout.hide()
                 }
                 setData(appState.serverResponseData)
             }
             is AppState.Loading -> {
                 with(binding) {
-                    mainView.hide()
+                    imageView.hide()
                     loadingLayout.show()
                 }
+                setError()
             }
             is AppState.Error -> {
                 with(binding) {
-                    mainView.hide()
+                    imageView.hide()
                     loadingLayout.hide()
-//                    coordinatorView.showSnackBar(
-//                        getString(R.string.error),
-//                        getString(R.string.reload),
-//                        { viewModel.getData("${year}-${month}-${day - 1}") })
                     Toast.makeText(
                         context,
                         "Отсутствует подключение к интернету",
                         Toast.LENGTH_SHORT
                     ).show()
+                    setError()
                 }
             }
         }
@@ -104,7 +126,7 @@ class HomeFragment : Fragment() {
     @RequiresApi(Build.VERSION_CODES.O)
     private fun setData(serverResponseData: PODServerResponseData) {
         with(binding) {
-            mainView.show()
+            imageView.show()
             loadingLayout.hide()
             imageView.load(serverResponseData.url)
             bottom_sheet_description_header.text = serverResponseData.title
@@ -115,6 +137,36 @@ class HomeFragment : Fragment() {
     private fun setBottomSheetBehavior(bottomSheet: ConstraintLayout) {
         bottomSheetBehavior = BottomSheetBehavior.from(bottomSheet)
         bottomSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
+    }
+
+    @RequiresApi(Build.VERSION_CODES.M)
+    private fun setError() {
+        if (!checkInternet())
+            ObjectAnimator.ofFloat(binding.errorTextView, "translationY", 50f).start()
+        else
+            ObjectAnimator.ofFloat(binding.errorTextView, "translationY", -100f).start()
+    }
+
+    @RequiresApi(Build.VERSION_CODES.M)
+    private fun checkInternet(): Boolean {
+        val connectivityManager =
+            requireActivity().getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        val capabilities =
+            connectivityManager.getNetworkCapabilities(connectivityManager.activeNetwork)
+        if (capabilities != null) {
+            when {
+                capabilities.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR) -> {
+                    return true
+                }
+                capabilities.hasTransport(NetworkCapabilities.TRANSPORT_WIFI) -> {
+                    return true
+                }
+                capabilities.hasTransport(NetworkCapabilities.TRANSPORT_ETHERNET) -> {
+                    return true
+                }
+            }
+        }
+        return false
     }
 
     override fun onDestroyView() {
