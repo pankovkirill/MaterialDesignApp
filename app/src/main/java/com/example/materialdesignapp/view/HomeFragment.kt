@@ -6,6 +6,12 @@ import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.os.Build
 import android.os.Bundle
+import android.text.Spannable
+import android.text.SpannableString
+import android.text.style.BackgroundColorSpan
+import android.text.style.BulletSpan
+import android.text.style.ForegroundColorSpan
+import android.text.style.StyleSpan
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,6 +19,7 @@ import android.widget.ImageView
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.transition.ChangeBounds
@@ -58,7 +65,7 @@ class HomeFragment : Fragment() {
         return binding.root
     }
 
-    @RequiresApi(Build.VERSION_CODES.O)
+    @RequiresApi(Build.VERSION_CODES.P)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setBottomSheetBehavior(view.findViewById(R.id.bottom_sheet_container))
@@ -91,7 +98,7 @@ class HomeFragment : Fragment() {
         }
     }
 
-    @RequiresApi(Build.VERSION_CODES.O)
+    @RequiresApi(Build.VERSION_CODES.P)
     private fun renderData(appState: AppState) {
         when (appState) {
             is AppState.Success -> {
@@ -123,15 +130,58 @@ class HomeFragment : Fragment() {
         }
     }
 
-    @RequiresApi(Build.VERSION_CODES.O)
+    @RequiresApi(Build.VERSION_CODES.P)
     private fun setData(serverResponseData: PODServerResponseData) {
         with(binding) {
             imageView.show()
             loadingLayout.hide()
             imageView.load(serverResponseData.url)
-            bottom_sheet_description_header.text = serverResponseData.title
-            bottom_sheet_description.text = serverResponseData.explanation
+            bottom_sheet_description_header.text = titleSpan(serverResponseData.title)
+            bottom_sheet_description.text = textSpan(serverResponseData.explanation)
         }
+    }
+
+    @RequiresApi(Build.VERSION_CODES.P)
+    fun textSpan(text: String):Spannable{
+        val spannable = SpannableString(text)
+
+        spannable.setSpan(
+            ForegroundColorSpan(
+                ContextCompat.getColor(
+                    requireContext(),
+                    R.color.white
+                )
+            ),
+            0,
+            100,
+            Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+        )
+        return spannable
+    }
+
+    @RequiresApi(Build.VERSION_CODES.P)
+    fun titleSpan(text: String):Spannable{
+        val symbolCount = text.length
+        val spannable = SpannableString(text)
+        spannable.setSpan(
+            BackgroundColorSpan(
+                ContextCompat.getColor(
+                    requireContext(),
+                    R.color.orange_700
+                )
+            ),
+            0,
+            symbolCount,
+            Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+        )
+
+        spannable.setSpan(
+            BulletSpan(15,ContextCompat.getColor(requireContext(), R.color.orange_700), 10),
+            0,
+            1,
+            Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+        )
+        return spannable
     }
 
     private fun setBottomSheetBehavior(bottomSheet: ConstraintLayout) {
