@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.SplashActivity"
+    android:background="@color/orange_700"
+    android:orientation="horizontal"
+    android:gravity="center_horizontal">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Picture"
+        android:textSize="40sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:gravity="center"
+        android:paddingEnd="10dp"
+        android:translationY="-50dp"/>
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="of"
+        android:textSize="40sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:gravity="center"
+        android:paddingEnd="10dp"
+        android:translationY="-50dp"/>
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="the"
+        android:textSize="40sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:gravity="center"
+        android:paddingEnd="10dp"
+        android:translationY="-50dp"/>
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="day"
+        android:textSize="40sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:gravity="center"
+        android:translationY="-50dp"/>
+
+</LinearLayout>
